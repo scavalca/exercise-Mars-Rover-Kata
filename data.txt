@@ -1,31 +1,128 @@
-onst rover = {
+let rover = {
   x : 0,
   y : 0,
-  direction : "N"
+  direction : "N",
+  travelLog : []
 }
 
-function turnLeft(robo, comando){
-  if (robo.y >= 0 && robo.y < 9) {
-    if (comando === "l") {
-      robo.y--;
-    } else {}
-    console.log(`Rover has position: x=${robo.x}, y=${robo.y}`);
+function turnLeft(robo) {
+
+  switch(robo.direction) {
+    case "N" :
+      robo.direction = "W";
+      break;
+    case "W" :
+      robo.direction = "S";
+      break;
+    case "S" :
+      robo.direction = "E";
+      break;
+    case "E" :
+      robo.direction = "N";
+      break;
+  }
+
+
+return robo.direction;
+}
+
+//console.log (rover.direction);
+//rover.direction = turnLeft(rover);
+//console.log(rover.direction);
+//rover.direction = turnLeft(rover);
+//console.log(rover.direction);
+//rover.direction = turnLeft(rover);
+//console.log(rover.direction);
+
+//turnLeft(rover, "N");
+
+function turnRight(robo) {
+
+  switch(robo.direction) {
+    case "N" :
+      robo.direction = "E";
+      break;
+    case "E" :
+      robo.direction = "S";
+      break;
+    case "S" :
+      robo.direction = "W";
+      break;
+    case "W" :
+      robo.direction = "N"
+      break;
+  }
+  return robo.direction;
+}
+
+//console.log(rover.direction);
+//rover.direction = turnRight(rover);
+
+
+function moveForward(robo) {
+  if (robo.x >= 0 && robo.x <10) {
+    switch(robo.direction) {
+      case "W" :
+        rover.x--;
+        break;
+      case "E" :
+        rover.x++;
+        break;
+      case "N" :
+        rover.y--;
+        break;
+      case "S" :
+        rover.y++;
+        break;
+    }
   } else {
     console.log("You can't place player outside of the board!");
+  }
+    console.log(robo.direction);
+}
+
+//moveForward(rover);
+
+
+function moveBackward(robo) {
+  if (robo.x >= 0 && robo.x < 10) {
+    switch(robo.direction) {
+      case "W" :
+        rover.x++;
+        break;
+      case "E" :
+        rover.x--;
+        break;
+      case "N" :
+        rover.x--;
+        break;
+      case "S" :
+        rover.x++;
+        break;
+    }
+  } else {
+    console.log("You can't place player outside of the board!");
+  }
+  console.log(robo.direction);
+}
+
+//moveBackward(rover);
+
+
+function commands(robo, ordem) {
+  for (let i = 0; i < ordem.length; i++){
+    let play = ordem[i];
+    if (ordem === "f") {
+      console.log(moveForward(robo));
+    } else if (ordem === "b") {
+      console.log(moveBackward(robo));
+    } else if (ordem === "r") {
+      console.log(turnRight(robo));
+    } else if (ordem === "l") {
+      console.log(turnLeft(robo));
+    } else{}
   }
 }
 
 
-function turnRight(robo, comando) {
-  if (robo.y >= 0 && robo.y < 9) {
-    if (comando === "r") {
-      robo.y++;
-    } else {}
-    console.log(`Rover has position: x=${robo.x}, y=${robo.y}`);
-  } else {
-    console.log("You can't place player outside of the board!");
-  }
-}
-
-turnLeft(rover, "l");
-turnRight(rover, "r");
+commands(rover, 'rffrfflfrff');
