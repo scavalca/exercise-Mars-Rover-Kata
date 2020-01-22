@@ -113,13 +113,13 @@ function commands(robo, ordem) {
   for (let i = 0; i < ordem.length; i++){
     let play = ordem[i];
     if (ordem === "f") {
-      console.log(moveForward(robo));
+      console.log(moveForward(ordem));
     } else if (ordem === "b") {
-      console.log(moveBackward(robo));
+      console.log(moveBackward(ordem));
     } else if (ordem === "r") {
-      console.log(turnRight(robo));
+      console.log(turnRight(ordem));
     } else if (ordem === "l") {
-      console.log(turnLeft(robo));
+      console.log(turnLeft(ordem));
     } else{}
   }
 }
