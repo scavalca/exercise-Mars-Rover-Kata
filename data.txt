@@ -112,13 +112,13 @@ function moveBackward(robo) {
 function commands(robo, ordem) {
   for (let i = 0; i < ordem.length; i++){
     let play = ordem[i];
-    if (ordem === "f") {
+    if (play === "f") {
       console.log(moveForward(ordem));
-    } else if (ordem === "b") {
+    } else if (play === "b") {
       console.log(moveBackward(ordem));
-    } else if (ordem === "r") {
+    } else if (play === "r") {
       console.log(turnRight(ordem));
-    } else if (ordem === "l") {
+    } else if (play === "l") {
       console.log(turnLeft(ordem));
     } else{}
   }
