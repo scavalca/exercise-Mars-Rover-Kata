@@ -111,8 +111,8 @@ function moveBackward(robot) {
             break;
     }
     if (podeMover(auxX,auxY)){
-        robo.x = auxX;
-        robo.y = auxY;
+        robot.x = auxX;
+        robot.y = auxY;
     }
     else {
         console.log('bateu em algum lugar');
@@ -134,7 +134,9 @@ function commands(robot, ordem) {
         robot.direction = turnRight(robot);
       } else if (play === "l") {
         robot.direction = turnLeft(robot);
-      } else {}
+      } else {
+        console.log('Comando invalido, utilize os comandos f, b, r ou l');
+      }
       console.log ('Estou apontando para direção: ' + robot.direction + ' e estou na posição: ' + robot.x + ','+ robot.y);
     }
     return robot;
@@ -148,9 +150,10 @@ function podeMover(x,y){
     let resultado = false;
     if ((x < 0) || (x>9) || (y < 0) || (y > 9)) {
       bateuParede = true;
-    } if ((grid[y][x] === 1)) {
+    } else if ((grid[y][x] === 1)) {
       bateuObstaculo = true;
-    } if (!bateuParede && !bateuObstaculo) { // Só pode mover se os dois forem falsos
+    } 
+    if (!bateuParede && !bateuObstaculo) { // Só pode mover se os dois forem falsos
         resultado = true;
     }
     return resultado;
